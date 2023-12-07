@@ -3,7 +3,7 @@ from task.models import Task
 # Create your models here.
 class Category(models.Model):
   name = models.CharField(max_length=50)
-  task = models.ManyToManyField(Task)
+  task = models.ManyToManyField(Task, related_name='categories')
 
   def __str__(self):
       return self.name

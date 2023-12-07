@@ -16,7 +16,7 @@
             <h6 class="card-subtitle mb-2 text-body-secondary">{{task.assign_at}}</h6>
             <p class="card-text">{{task.description | truncatewords:30}}</p>
             <p class="card-text">
-             {% for cat in task.category_set.all %}
+             {% for cat in task.categories.all %}
               {{cat.name}} ,
              {% endfor %}
             </p>
