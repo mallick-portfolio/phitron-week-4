@@ -1,7 +1,7 @@
 
 
 from django.urls import path
-
+from task.views import create_task
 urlpatterns = [
-    # path('admin/', admin.site.urls),
+    path('create-task/', create_task, name="create_task"),
 ]
