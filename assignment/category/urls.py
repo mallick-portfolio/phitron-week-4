@@ -1,6 +1,7 @@
 
 from django.urls import path
+from category.views import create_category
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
+    path('create-category/',create_category, name="create_category"),
 ]

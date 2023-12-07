@@ -5,7 +5,7 @@ from task_management.views import home
 
 
 urlpatterns = [
-    path('', home),
+    path('', home, name="home"),
     path('admin/', admin.site.urls),
     path("task/", include('task.urls')),
     path("category/", include('category.urls')),

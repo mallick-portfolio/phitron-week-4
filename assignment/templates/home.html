@@ -6,9 +6,32 @@
 
 {% block content %}
 
-  <div class="container">
+  <div class="container py-5">
     <div class="row">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis nostrum sunt vel fugit corporis, quis quas at similique voluptas doloremque, eum consectetur itaque repudiandae ratione necessitatibus facere. Adipisci, nemo distinctio?
+      {% for task in tasks %}
+      <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{task.title}}</h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">{{task.assign_at}}</h6>
+            <p class="card-text">{{task.description | truncatewords:30}}</p>
+            <p class="card-text">
+             {% for cat in task.category_set.all %}
+              {{cat.name}} ,
+             {% endfor %}
+            </p>
+           
+            {% if task.is_completed %}
+             <p class="text-primary">Completed</p>
+            {% else %}
+            <a href="{% url "edit_task" task.id %}" class="card-link btn btn-primary btn-sm">Edit</a>
+            <a href="{% url "delete_task" task.id %}" class="card-link btn btn-warning btn-sm">Delete</a>
+            {% endif %}
+            
+          </div>
+        </div>
+      </div>
+      {% endfor %}
     </div>
   </div>
 {% endblock content %}
